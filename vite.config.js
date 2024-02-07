@@ -10,34 +10,10 @@ export default defineConfig({
   plugins: [
     vue(),
     federation({
-      name: 'remote-app',
-      filename: 'remoteEntry.js',
+      name: 'remote-simple',
       exposes: {
-        './ZalAmin': {
-          name: 'ZalAmin',
-          import: './src/components/ZalAmin.vue',
-        },
-      },
-      // shared: {
-      //   'vue': {},
-      // },
-      build: {
-        // minify: false,
-        // target: 'esnext',
-        // cssCodeSplit: false,
-        rollupOptions: {
-          output: {
-            format: 'esm',
-            entryFileNames: 'assets/[name].js',
-            // minifyInternalExports: false,
-          },
-        },
+        './remote-simple-zal': './src/components/ZalAmin.vue',
       },
     }),
-  ],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
-  }
+  ]
 })
